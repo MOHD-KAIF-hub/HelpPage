@@ -7,12 +7,13 @@
 .Sidebar_Container_Sublink{
     display: flex;
     flex-direction: column;
-    width: 100%;
+    margin:0px 20px 0px 70px;
     align-items: center;
+  
 }
 .Sidebar_Container_Sublink .navlink{
-    width: 70%;
-   
+margin-left: 0px;
+width: 100%;
 }
 .Sidebar_Container_Sublink .navlink:hover{
     background-color: #E4F0EB;

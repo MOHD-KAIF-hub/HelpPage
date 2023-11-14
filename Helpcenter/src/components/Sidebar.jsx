@@ -92,7 +92,7 @@ const handlecontact=()=>setcontact(!contact);
         {
                 (isSidebarOpen||!isSmallScreen) &&
 
-                <div className={`Sidebar_container flex max-h-[400px]  overflow-y-auto ${!isSmallScreen ? 'border-r sticky top-0 ' : 'border-0 w-full'} `} >
+                <div className={`Sidebar_container flex max-h-screen overflow-y-auto ${!isSmallScreen ? 'border-r sticky top-0 ' : 'border-0 w-full'} `} >
                   
                     <div className="flex flex-col  items-end mt-5 " ref={sidebarRef} style={{ width: sidebarWidth }} onMouseDown={(e) => e.preventDefault()} >
                      
@@ -107,7 +107,7 @@ const handlecontact=()=>setcontact(!contact);
                             <SidebarLink isSmallScreen={isSmallScreen} handlevalue={handlecontact}  icon={contact} name="Contact"/>
                     
                     </div>
-                    <div className="border-r-[5px] h-screen sticky top-0" onMouseDown={startResizing} />
+                    <div className=" dragable border-r-[5px] max-h-screen  sticky top-0" onMouseDown={startResizing} />
                 
                 </div>
 

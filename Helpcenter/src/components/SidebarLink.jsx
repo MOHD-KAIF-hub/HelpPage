@@ -14,6 +14,7 @@ const SidebarLink = ({isSmallScreen,handlevalue,icon,name}) => {
                                          {name}
                                         </div>
                                     </div>
+                              
                                 </div>
                                 {icon&&
                                     <div className='Sidebar_Container_Sublink'>
@@ -22,6 +23,7 @@ const SidebarLink = ({isSmallScreen,handlevalue,icon,name}) => {
                                         <NavLink to="Sublink3" className='navlink'>Sublink3</NavLink>
                                     </div>
                                 }
+                             
                             </div>
 
   )
