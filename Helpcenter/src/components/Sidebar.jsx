@@ -1,6 +1,5 @@
 
-import React, {  useState,useRef } from 'react';
-import './sidebar.css';
+import React, {  useState,useRef,useCallback,useEffect } from 'react';
 import { FaBars,FaTimes } from 'react-icons/fa';
 import SidebarLink from './SidebarLink';
 
@@ -23,15 +22,15 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar,isSmallScreen}) => {
       const [isResizing, setIsResizing] = useState(false);
       const [sidebarWidth, setSidebarWidth] = useState(300);
     
-      const startResizing = React.useCallback((mouseDownEvent) => {
+      const startResizing = useCallback((mouseDownEvent) => {
         setIsResizing(true);
       }, []);
     
-      const stopResizing = React.useCallback(() => {
+      const stopResizing = useCallback(() => {
         setIsResizing(false);
       }, []);
     
-      const resize = React.useCallback(
+      const resize = useCallback(
         (mouseMoveEvent) => {
           if (isResizing) {
             setSidebarWidth(
@@ -43,7 +42,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar,isSmallScreen}) => {
         [isResizing]
       );
     
-      React.useEffect(() => {
+      useEffect(() => {
         window.addEventListener("mousemove", resize);
         window.addEventListener("mouseup", stopResizing);
         return () => {
@@ -92,7 +91,7 @@ const handlecontact=()=>setcontact(!contact);
         {
                 (isSidebarOpen||!isSmallScreen) &&
 
-                <div className={`Sidebar_container flex max-h-screen overflow-y-auto ${!isSmallScreen ? 'border-r sticky top-0 ' : 'border-0 w-full'} `} >
+                <div className={` flex min-w-fit max-h-screen overflow-y-auto ${!isSmallScreen ? 'border-r sticky top-0 ' : 'border-0 w-full'} `} >
                   
                     <div className="flex flex-col  items-end mt-5 " ref={sidebarRef} style={{ width: sidebarWidth }} onMouseDown={(e) => e.preventDefault()} >
                      
