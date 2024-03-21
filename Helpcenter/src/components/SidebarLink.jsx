@@ -1,32 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import { MdKeyboardArrowRight } from "react-icons/md";
 
-const SidebarLink = ({isSmallScreen,handlevalue,icon,name}) => {
-  return (
-    <div  className="Sidebar_Container_Sub  flex flex-col w-full cursor-pointer" onClick={handlevalue}>
-                                <div className={`Sidebar_Container_Sub1 hover:text-lime-800 transition-transform duration-250 ease-in-out flex pl-10 pr-10 h-12 gap-[10px] items-center rounded-md ${isSmallScreen?'border border-x-0  border-t-0':'border-0'}`}>
-                                    
-                                <span
-                                        className={`w-fit text-lg ${icon?'transform rotate-0':'transform rotate-[-90deg]'}`}> &#709;
-                                        </span> 
-                                    <div className="Sidebar_Container_Sub2 flex items-start mr-2 ">
-                                        <div className="text-base w-fit">
-                                         {name}
-                                        </div>
-                                    </div>
-                              
-                                </div>
-                                {icon&&
-                                    <div className='flex flex-col mr-5 ml-20 items-center'>
-                                        <NavLink to="Sublink1" className='Sidebar_Container_Sublink ml-0 w-full hover:bg-lime-500/25 hover:text-lime-800'>Sublink1</NavLink>
-                                        <NavLink to="Sublink2" className=' ml-0 w-full hover:bg-lime-500/25 hover:text-lime-800'>Sublink2</NavLink>
-                                        <NavLink to="Sublink3" className=' ml-0 w-full hover:bg-lime-500/25 hover:text-lime-800'>Sublink3</NavLink>
-                                    </div>
-                                }
-                             
-                            </div>
+const SidebarLink = ({ isSmallScreen, name, icon }) => {
+    const [isdropdownOpen, setisdropdownOpen] = useState(false);
 
-  )
+    return (
+        <div className="  flex flex-col w-full cursor-pointer" onClick={() => {
+            setisdropdownOpen((prev) => (!prev))
+        }}>
+            <div className={` border-b-[1px]  border-lime-500/25 text-lime-900 transition-transform duration-250 ease-in-out flex pl-10 pr-10 h-12 gap-[10px] items-center  ${isSmallScreen ? 'border border-x-0  border-t-0' : 'border-0'}`}>
+                <span
+                    className={`w-fit text-lg `}> {icon}
+                </span>
+
+                <div className=" flex items-start min-w-[80px] mr-2 ">
+                    <div className=" w-fit">
+                        {name}
+                    </div>
+                </div>
+                <span
+                    className={`w-fit text-lg  transition-transform duration-500 ease-in-out ${isdropdownOpen ? 'transform rotate-[90deg]' : 'transform rotate-0'}`}
+
+                > <MdKeyboardArrowRight />
+                </span>
+
+            </div>
+            {isdropdownOpen &&
+                <div className='flex flex-col justify-center w-full items-center' onClick={(e) => e.stopPropagation()}>
+                    <span className='w-full text-lime-800 flex justify-center items-center'><NavLink to="Sublink1" className='  pl-20 py-1 left-4  w-full hover:bg-lime-500/25 hover:text-gray-800 focus:outline-none focus:bg-lime-500/25 focus:text-gray-800 '>Sublink1</NavLink></span>
+                    <span className='w-full text-lime-800 flex justify-center items-center'><NavLink to="Sublink2" className='pl-20  py-1 left-4  w-full hover:bg-lime-500/25 hover:text-gray-800 focus:outline-none focus:bg-lime-500/25 focus:text-gray-800 '>Sublink2</NavLink></span>
+                    <span className='w-full text-lime-800 flex justify-center items-center  '><NavLink to="Sublink3" className=' pl-20 py-1  left-4  w-full  hover:bg-lime-500/25 hover:text-gray-800 focus:outline-none focus:bg-lime-500/25 focus:text-gray-800 '>Sublink3</NavLink></span>
+                </div>
+            }
+
+
+        </div>
+
+    )
 }
 
 export default SidebarLink
