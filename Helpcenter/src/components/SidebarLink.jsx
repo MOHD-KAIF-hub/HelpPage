@@ -9,7 +9,7 @@ const SidebarLink = ({ isSmallScreen, name, icon }) => {
         <div className="  flex flex-col w-full cursor-pointer" onClick={() => {
             setisdropdownOpen((prev) => (!prev))
         }}>
-            <div className={` border-b-[1px]  border-lime-500/25 text-lime-900 transition-transform duration-250 ease-in-out flex pl-10 pr-10 h-12 gap-[10px] items-center  ${isSmallScreen ? 'border border-x-0  border-t-0' : 'border-0'}`}>
+            <div className={` border-b-[1px]  border-lime-500/25 text-lime-900 transition-transform duration-250 ease-in-out flex pl-10 pr-10 h-10 gap-[10px] items-center  ${isSmallScreen ? 'border border-x-0  border-t-0' : 'border-0'}`}>
                 <span
                     className={`w-fit text-lg `}> {icon}
                 </span>
